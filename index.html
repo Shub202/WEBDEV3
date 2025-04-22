@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Styling and JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="site-identity">
+                <a href="#" class="site-title">Shubham Kumar</a>
+                <p class="site-tagline">Frontend Developer</p>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#quiz-section">Quiz</a></li>
+                    <li><a href="#carousel-section">Carousel</a></li>
+                    <li><a href="#quote-section">Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section about-section">
+            <div class="container">
+            <h2 class="section-title">About</h2>
+            <p class="section-description"></p>
+                Welcome to my latest web page. Here, I demonstrate key web development skills through engaging components built with HTML, CSS, and JavaScript, including responsive design and API integration.
+            </p>
+            <p>This web page includes:</p>
+            <ul class="features-list">
+                <li>A responsive layout structured with Flexbox and CSS Grid, ensuring a smooth experience across devices.</li>
+                <li>An engaging quiz section with 20 multiple-choice questions and smooth transitions.</li>
+                <li>An image carousel that rotates through images on button click.</li>
+                <li>A quote fetcher that displays motivational quotes from a public API in real-time.</li>
+                <li>Connect me on <a href="https://linkedin.com/in/shubham-kumar-b21037295" target="_blank">LinkedIn</a> or explore my projects on <a href="https://github.com/Shub202" target="_blank">GitHub</a>.</li>
+            </ul>
+            </div>
+        </section>
+        </section>
+
+        <section id="quiz-section" class="section quiz-section">
+            <div class="container">
+                <h2 class="section-title"> Quiz</h2> 
+                <div id="quiz-container" class="interactive-box">
+                    <p id="question-number" class="question-count"></p>
+                    <h3 id="question-text" class="quiz-question">Loading quiz...</h3>
+                    <div id="answer-buttons" class="btn-grid">
+                        </div>
+                    <p id="feedback" class="feedback-msg"></p>
+                    <div class="quiz-controls">
+                         <button id="quiz-next-btn" class="btn primary hidden">Next Question</button>
+                    </div>
+
+                    <div id="score-section" class="hidden">
+                        <p>Quiz Completed!</p>
+                        <p class="final-score">Your Score: <span id="final-score">0</span>/<span id="total-questions">0</span></p>
+                        <button id="restart-quiz-btn" class="btn secondary">Restart Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="carousel-section" class="section carousel-section">
+            <div class="container">
+                <h2 class="section-title">Image Carousel</h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-slides">
+                        </div>
+                     <button id="carousel-prev-btn" class="carousel-btn prev" aria-label="Previous Slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L10.83 12l4.78-4.59z"/></svg>
+                    </button>
+                    <button id="carousel-next-btn" class="carousel-btn next" aria-label="Next Slide">
+                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8.39 7.41L9.8 6l6 6-6 6-1.41-1.41L13.17 12l-4.78-4.59z"/></svg>
+                    </button>
+                    <div class="carousel-indicators">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quote-section" class="section quote-section">
+            <div class="container">
+                <h2 class="section-title">Thought for the Day </h2>
+                <div class="interactive-box">
+                    <blockquote id="quote-text" class="quote">Click the button below to fetch an inspirational quote...</blockquote>
+                    <p id="quote-author" class="quote-author"></p>
+                     <button id="fetch-quote-btn" class="btn primary">Get Thought</button>
+                     <p id="quote-status" class="status-msg"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Shubham Kumar. All rights reserved.</p>
+            <p><a href="https://github.com/Shub202" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/shubham-kumar-b21037295" target="_blank">LinkedIn</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
