@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeCarousel();
 
 
-    // === API FETCHER ===
+    // === MANUAL RANDOM QUOTES ===
     const quoteElements = {
         fetchBtn: select('#fetch-quote-btn'),
         quoteText: select('#quote-text'),
@@ -254,36 +254,42 @@ document.addEventListener('DOMContentLoaded', () => {
         statusMsg: select('#quote-status')
     };
 
-    const API_URL = "https://api.quotable.io/random";
+    // Manual array of quotes
+    const quotes = [
+        { content: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+        { content: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+        { content: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+        { content: "Everything you can imagine is real.", author: "Pablo Picasso" },
+        { content: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+        { content: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+        { content: "You miss 100% of the shots you don’t take.", author: "Wayne Gretzky" },
+        { content: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
+        { content: "Dream big and dare to fail.", author: "Norman Vaughan" },
+        { content: "Turn your wounds into wisdom.", author: "Oprah Winfrey" }
+        // You can add more quotes easily
+    ];
 
-    const fetchAndDisplayQuote = async () => {
-        quoteElements.statusMsg.textContent = "Fetching quote...";
+    // Function to fetch and display random quote from the manual array
+    const fetchAndDisplayQuote = () => {
+        quoteElements.statusMsg.textContent = "Loading new quote...";
         quoteElements.statusMsg.className = 'status-msg'; // Reset classes
-        quoteElements.fetchBtn.disabled = true; // Disable button while fetching
+        quoteElements.fetchBtn.disabled = true; // Disable button while loading
         quoteElements.quoteText.textContent = ""; // Clear previous quote
         quoteElements.quoteAuthor.textContent = ""; // Clear previous author
 
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            quoteElements.quoteText.textContent = `"${data.content}"`;
-            quoteElements.quoteAuthor.textContent = `— ${data.author}`;
+        // Simulate a small delay (optional, for better UX)
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
+
+            quoteElements.quoteText.textContent = `"${randomQuote.content}"`;
+            quoteElements.quoteAuthor.textContent = `— ${randomQuote.author}`;
             quoteElements.statusMsg.textContent = ""; // Clear status on success
-        } catch (error) {
-            console.error("Error fetching quote:", error);
-            quoteElements.quoteText.textContent = "Could not fetch quote.";
-            quoteElements.quoteAuthor.textContent = "";
-            quoteElements.statusMsg.textContent = "Failed to fetch quote. Please try again.";
-            quoteElements.statusMsg.classList.add('danger-color'); // Style error message
-        } finally {
             quoteElements.fetchBtn.disabled = false; // Re-enable button
-        }
+        }, 500); // 500ms delay
     };
 
-    // Event Listener for Quote Button
+    // Event listener for Quote Button
     quoteElements.fetchBtn.addEventListener('click', fetchAndDisplayQuote);
 
     // Fetch a quote on page load
@@ -310,5 +316,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
 }); // End DOMContentLoaded
